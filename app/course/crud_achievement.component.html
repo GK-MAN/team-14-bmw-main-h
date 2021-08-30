@@ -1,0 +1,113 @@
+<div class="AddEmployeeTitleContainer">
+<div class="addEmployeeTitleContainer">
+  <div>
+    Achievement Type
+  </div>
+  <br/>
+  <div class="btn btn-primary" (click)="addNewAchievement_TypeBtn()">Achievement Type</div>
+  <br/>
+  <p></p>
+</div>
+<div class="addEmployeeBtnContainer">
+</div>
+</div>
+
+<div *ngIf="newAchievement_TypeClicked">
+<div class="formWrapper">
+<form>
+  <div class="form-group name">
+    <input type="text"
+           class="form-control input"
+           id="id"
+           name="id"
+           [(ngModel)]="model.id"
+           placeholder="ID">
+  </div>
+   <div class="form-group position">
+    <input type="text"
+           class="form-control positionInput"
+           id="name"
+           name="name"
+           [(ngModel)]="model.name"
+           placeholder="Name">
+  </div>
+  <div class="form-group name">
+  <input type="text"
+         class="form-control input"
+         id="mark"
+         name="mark"
+         [(ngModel)]="model.mark"
+         placeholder="Mark">
+</div>
+  <div class="submitBtnContainer">
+    <button type="submit" class="btn btn-success" (click)="addAchievement_Type()">SAVE</button>
+  </div>
+</form>
+</div>
+</div>
+
+<hr>
+
+<!-- Update Achievement Type -->
+<div *ngIf="updateAchievement_TypeClicked">
+<div class="editEmployeeTitleContainer">
+<div class="">Update Achievement Type</div>
+</div>
+<form>
+ <div class="form-group position">
+  <input type="text"
+         class="form-control"
+         id="id"
+         name="id"
+         [(ngModel)]="model2.id"
+         placeholder="ID">
+</div>
+<div class="form-group name">
+<input type="text"
+       class="form-control"
+       id="name"
+       name="name"
+       [(ngModel)]="model2.name"
+       placeholder="Name">
+</div>
+<div class="form-group name">
+<input type="text"
+       class="form-control"
+       id="mark"
+       name="mark"
+       [(ngModel)]="model2.mark"
+       placeholder="Mark">
+</div>
+<button class="btn btn-success" type="submit" (click)="updateAchievement_Type()">Update</button>
+</form>
+</div>
+
+<hr>
+
+<div class="search-hero container">
+<input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for an Achievement Type by id or Name or Mark">
+</div>
+
+<div class="tableWrapper">
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th class="col-3">ID</th>
+    <th class="col-5">Name</th>
+    <th class="col-2">Mark</th>
+    <th class="col-2">Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let item of achievement_type | filter:searchText; let i = index">
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.mark}}</td>
+    <td>
+    <button class="btn btn-primary" (click)="editAchievement_Type(i)">Update</button>
+    <button class="btn btn-danger" (click)="deleteAchievement_Type(i)">Delete</button>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
