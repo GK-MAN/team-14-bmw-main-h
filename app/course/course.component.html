@@ -65,7 +65,7 @@
     <td>{{course.description}}</td>
     <td>{{course.duration}}</td>
     <td>
-    <button class="btn btn-warning" routerLink="/learning_outcome">Learning Outcome</button>
+    <button class="btn btn-warning" (click)="learning_outcome()">Learning Outcome</button>
     <button class="btn btn-primary" (click)="editCourse(i)">Update</button>
     <button class="btn btn-danger" (click)="deleteCourse(i)">Delete</button>
     </td>

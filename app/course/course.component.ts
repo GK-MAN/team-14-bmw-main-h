@@ -5,6 +5,8 @@ import { first } from 'rxjs/operators';
 import { Course } from '../_models';
 import { CourseService, AuthenticationService, AlertService } from '../_services';
 
+import { Router } from '@angular/router';
+
 @Component({ 
     templateUrl: 'course.component.html',
     styleUrls: ['./ss_course.component.css'] 
@@ -21,7 +23,8 @@ export class CourseComponent implements OnInit, OnDestroy {
 
   constructor(
       private courseService: CourseService,
-      private alertService: AlertService
+      private alertService: AlertService,
+      private router:Router
   ) {
 
   }
@@ -49,6 +52,13 @@ export class CourseComponent implements OnInit, OnDestroy {
     newCourseClicked = false;
 
   color;
+
+  learning_outcome(){
+    //this.router.navigate([`/services`]);
+    this.router.navigate(['./learning_outcome'], {
+      state: { example: 'dadta' }
+    });
+  }
 
   model: any = {};
   model2: any = {}; 

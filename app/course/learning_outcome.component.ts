@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
+import { Router } from '@angular/router';
+
 import { User } from '../_models';
 import { UserService, AuthenticationService } from '../_services';
 
@@ -16,13 +18,18 @@ export class Learning_OutcomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     users: User[] = [];
 
+    name = '';
+
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private router: Router
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
         });
+
+        this.name = this.router.getCurrentNavigation().extras.state.example;
     }
 
     ngOnInit() {
